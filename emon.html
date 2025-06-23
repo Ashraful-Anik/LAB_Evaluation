@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Student Record</h3>
+
+  <table id="studentTable" style="width:100%">
+    <tr>
+      <th>Name</th>
+      <th>ID</th>
+      <th>Marks</th>
+    </tr>
+    <tr data-id="1">
+      <td>Sakib</td>
+      <td>71934</td>
+      <td>95</td>
+    </tr>
+    <tr data=Rakib="2">
+        <td>Rakib</td>
+        <td>71935</td>
+        <td>85</td>
+    </tr>
+  </table>
+
+  <h4>Add New Record</h4>
+<table>
+  <tr>
+    <td><label for="name">Name</label></td>
+    <td><input type="text" id="name" /></td>
+  </tr>
+  <tr>
+    <td><label for="id">ID</label></td>
+    <td><input type="text" id="id" /></td>
+  </tr>
+  <tr>
+    <td><label for="marks">Marks</label></td>
+    <td><input type="text" id="marks" /></td>
+  </tr>
+  <tr>
+    <td colspan="2"><button id="addBtn" >Add</button></td>
+  </tr>
+</table>
+
+  <h4>Modify Record</h4>
+  <table>
+    <tr>
+        <td>Enter ID: <input type="text" id="mod-id" /></td>
+        <td><button id="modifyBtn">Modify</button></td>
+    </tr>
+  </table>
+
+  <script>
+    //Add new row
+    $('#addBtn').click(function () {
+      const name = $('#name').val().trim();
+      const id = $('#id').val().trim();
+      const marks = $('#marks').val().trim();
+
+      if (name && id && marks) {
+        $('#studentTable').append(`
+          <tr data-id="${id}">
+            <td>${name}</td>
+            <td>${id}</td>
+            <td>${marks}</td>
+          </tr>
+        `);
+        $('#name').val(''); $('#id').val(''); $('#marks').val('');
+      } else {
+        alert("All fields are required!");
+      }
+    });
+  </script>
+</body>
+</html>
